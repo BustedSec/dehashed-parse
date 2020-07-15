@@ -1,6 +1,6 @@
 # dehashed-parse
 
-Tool to query Dehashed API and parse the json dump into a csv.
+Tool to query DeHashed API and parse the JSON dump into a csv.
 
 _Note:_ For performing queries both a Dehashed account with API credits and an active subscription is required. 
 
