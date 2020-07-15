@@ -7,7 +7,7 @@ import csv
 parser = argparse.ArgumentParser()
 group = parser.add_mutually_exclusive_group(required=True)
 group.add_argument('-q', dest='do_query', action='store_true', help='Run an API query and operate on results')
-group.add_argument('-i', dest='input_file', help='Input file')
+group.add_argument('-i', dest='input_file', help='Input JSON dump if not performing query')
 parser.add_argument('-o', dest="output_file", help='Output csv', required=True)
 args = parser.parse_args()
 
@@ -19,14 +19,11 @@ def query_api():
     api_key = input("Enter dehashed API key: ")
     target = input("Enter target: ")
 
-    api_get = api_endpoint + target
-    getdump = requests.get(api_get, headers = {"Accept": "application/json"}, auth=(api_user, api_key))
-    dump = getdump.text
-    json_file = "dehashed_out.json"
-    out_file = open(json_file, "w")
-    out_file.write(dump)
+    getdump = requests.get(api_endpoint + target, headers = {"Accept": "application/json"}, auth=(api_user, api_key))
+    out_file = open("dehashed_out.json", "w")
+    out_file.write(getdump.text)
     out_file.close()
-    parse_json(json_file)
+    parse_json("dehashed_out.json")
 
 def parse_json(json_file):
     f = open(json_file)
