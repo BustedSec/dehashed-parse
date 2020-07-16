@@ -4,10 +4,10 @@ Tool to query the DeHashed API and parse the JSON dump into a csv.
 
 _Note: For performing queries both a DeHashed account with API credits and an active subscription is required._ 
 
-### Requirements:
+### Quick Start:
 
 ```
-pip3 install ijson
+git clone https://github.com/aus-mate/dehashed-parse && cd dehashed-parse && chmod +x dehashed-parse.py && pip3 install -r requirements.txt
 ```
 
 ### Usage:
