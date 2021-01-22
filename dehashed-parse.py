@@ -30,10 +30,10 @@ def parse_json(json_file):
     objects = ijson.items(f, 'entries.item')
     for o in objects:
         if o['email'] != None and o['email'] != "":
-            results.append([o['email'], o['password'], o['hashed_password']])
+            results.append([o['email'], o['name'], o['password'], o['hashed_password'], o['address'], o['ip_address'], o['database_name']])
 
 def export_csv():
-    results.insert(0,["Email Address", "Password", "Hash"])
+    results.insert(0,["Email Address","Name", "Password", "Hash", "address", "IP address", "Database"])
     out = open(args.output_file, "w")
     writer = csv.writer(out)
     writer.writerows(results)
